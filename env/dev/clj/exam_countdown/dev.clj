@@ -9,4 +9,5 @@
 (defn start-figwheel []
   (future
     (print "Starting figwheel.\n")
-    (lein/-main ["figwheel"])))
+    (lein/-main ["figwheel"]))
+  (browser-repl))

@@ -1,7 +1,6 @@
 (ns exam-countdown.views
   (:require [re-frame.core :refer [subscribe dispatch]]))
 
-
 (defn main-panel    ;; the top level of our app
   []
   (let [name  (subscribe [:name])]   ;; obtain a reactive data source
