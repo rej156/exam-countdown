@@ -3,6 +3,8 @@
             [re-frame.core :refer [subscribe dispatch]]
             [exam-countdown.views.nav :refer [nav jquery-dropdown-activate]]
             [exam-countdown.views.next-up :refer [next-up]]
+            [cljs-time.core :refer [interval in-days date-time minutes from-now
+  now time-now]]
             [exam-countdown.views.later-on :refer [later-on]]))
 
 (defn main-panel    ;; the top level of our app
@@ -13,6 +15,8 @@
        [nav]
        [next-up]
        [later-on]
+       (.log js/console (-> (interval (time-now) (date-time 2015 04 28))
+                            (in-days)))
        [:div.container
         [:h1 "Welcome " @name]]])))
 
