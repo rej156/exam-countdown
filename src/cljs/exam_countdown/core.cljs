@@ -1,9 +1,7 @@
 (ns exam-countdown.core
   (:require-macros [secretary.core :refer [defroute]])
-  (:require [cljsjs.react :as react]
-            [goog.events :as events]
+  (:require [goog.events :as events]
             [reagent.core :as reagent :refer [atom]]
-            [reagent.session :as session]
             [re-frame.core :refer [dispatch dispatch-sync]]
             [secretary.core :as secretary]
             [exam-countdown.handlers]          ;; appears unused, but you need it here, to force loading.
