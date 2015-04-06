@@ -7,12 +7,9 @@
   :source-paths ["src/clj" "src/cljs"]
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [cljsjs/react "0.12.2-5"]
-                 [reagent "0.5.0"]
                  [reagent-forms "0.4.4"]
-                 [reagent-utils "0.1.3"]
                  [secretary "1.2.1"]
-                 [org.clojure/clojurescript "0.0-2843" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-3126" :scope "provided"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.3"]
                  [prone "0.8.0"]
