@@ -23,3 +23,9 @@
  :exam-selected?
  (fn [db exam]
    (reaction (some #(= (second exam) %) (:selected-exams @db)))))
+
+(register-sub
+ :selected-exams
+ (fn [db]
+   (reaction
+    (filter (fn [exam] (some #(= (:title exam ) %) (:selected-exams @db))) (:exams @db)))))
