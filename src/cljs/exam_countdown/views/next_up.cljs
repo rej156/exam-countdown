@@ -19,5 +19,20 @@
        [:h5 "Time"]
        [:h4
         ;; Nearest exam time detail
+        ]]
+      [:div.col.s6
+       [:h5 "Date"]
+       [:h4
+        ;; Nearest exam date detail
+        ]]
+      [:div.col.s6
+       [:h5 "Location"]
+       [:h4
+        ;; Nearest exam location detail
+        ]]
+      [:div.col.s6
+       [:h5 "Open Maps"]
+       [:h4
+        ;; Nearest exam maps detail - Open latitude and longitude on click
         ]]]
      ]))

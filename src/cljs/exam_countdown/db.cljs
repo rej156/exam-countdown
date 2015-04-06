@@ -23,6 +23,4 @@
 ;; The initial value loaded into app-dp
 ;;
 (def default-value
-  {:name "re-frame"})
-
-
+  {:name "Julia"})

@@ -11,7 +11,7 @@
        [nav]
        [next-up]
        [:div.container
-        [:h1 "Hello " @name]]])))
+        [:h1 "Welcome " @name]]])))
 
 (defn exam-countdown-app
   []

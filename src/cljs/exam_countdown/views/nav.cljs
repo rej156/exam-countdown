@@ -11,5 +11,9 @@
       [:i.large.mdi-image-dehaze]]
       [:ul.dropdown-content {:id "dropdown1"}
        [:li
-        [:a {:href "#!"} "One"]]]
+        [:a {:href "#"} "Exam options go here"]]
+       [:li
+        [:a {:href "#"} "Exam options 1"]]
+       [:li
+        [:a {:href "#"} "Exam options 2"]]]
       ]]))
