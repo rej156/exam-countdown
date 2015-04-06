@@ -1,6 +1,8 @@
 (ns exam-countdown.subs
   (:require-macros [reagent.ratom :refer [reaction]])
-  (:require [re-frame.core :refer [register-sub]]))
+  (:require [re-frame.core :refer [register-sub]]
+            [cljs-time.core :refer [interval in-days date-time minutes from-now
+  now time-now]]))
 
 
 ;; -- Helpers -----------------------------------------------------------------
@@ -29,3 +31,14 @@
  (fn [db]
    (reaction
     (filter (fn [exam] (some #(= (:title exam ) %) (:selected-exams @db))) (:exams @db)))))
+
+(register-sub
+ :days-away
+ (fn [db exam]
+   (reaction
+    (let [id (second exam)
+          year 2015
+          month (:month id)
+          day (:day id)]
+      (-> (interval (time-now) (date-time 2015 month day))
+          (in-days))))))
