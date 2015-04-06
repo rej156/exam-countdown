@@ -11,6 +11,7 @@
                  [secretary "1.2.1"]
                  [reagent "0.5.0"]
                  [org.clojure/clojurescript "0.0-2816"]
+                 [com.andrewmcveigh/cljs-time "0.3.3"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.3"]
                  [prone "0.8.0"]
