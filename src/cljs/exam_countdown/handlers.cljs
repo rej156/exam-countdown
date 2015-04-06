@@ -9,7 +9,7 @@
 (def standard-middlewares
   [trim-v
    ;; (if goog.DEBUG log-ex)    ;; will be available in v0.3.0
-   (when goog.DEBUG [debug (after valid-schema?)])])
+   ])
 
 ;; -- Helpers -----------------------------------------------------------------
 
@@ -28,3 +28,12 @@
   (fn                             ;; handler
     [db [new-name]]               ;; because of trim-v, not [_ new-name]
     new-name))
+
+(register-handler
+ :select-exam
+ [standard-middlewares (path :selected-exams)]
+ (fn
+   [db [selected-exam]]
+   (if-not (some #(= selected-exam %) db)
+     (conj db selected-exam)
+     (remove #{selected-exam} db))))

@@ -18,3 +18,8 @@
   :name              ;; usage (subscribe [:name])
   (fn  [db]
     (reaction (:name @db))))
+
+(register-sub
+ :exam-selected?
+ (fn [db exam]
+   (reaction (some #(= (second exam) %) (:selected-exams @db)))))

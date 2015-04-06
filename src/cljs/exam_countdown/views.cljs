@@ -1,7 +1,7 @@
 (ns exam-countdown.views
   (:require [reagent.core :as reagent]
             [re-frame.core :refer [subscribe dispatch]]
-            [exam-countdown.views.nav :refer [nav]]
+            [exam-countdown.views.nav :refer [nav jquery-dropdown-activate]]
             [exam-countdown.views.next-up :refer [next-up]]
             [exam-countdown.views.later-on :refer [later-on]]))
 
@@ -20,7 +20,7 @@
   []
   (let [ready?  (subscribe [:initialised?])]
     (reagent/create-class
-     {:component-did-mount #(.log js/console "Hi")
+     {:component-did-mount #(jquery-dropdown-activate)
 
       :reagent-render (fn []
                         (if-not @ready?                ;; data is loaded?

@@ -1,6 +1,6 @@
 (ns exam-countdown.db
   (:require
-      [schema.core :as s]))
+   [schema.core :as s]))
 
 
 ;; -- Prismatic Schema  -------------------------------------------------------
@@ -9,7 +9,6 @@
 ;; for anyone looking at the app for the first time.
 (def schema
   {})
-
 
 (defn valid-schema?
   "validate given db, writing any problems to console.error"
@@ -23,13 +22,14 @@
 ;; The initial value loaded into app-dp
 ;;
 (def default-value
-  {:name "Julia"
-   :ecs637u {:name "Digital Media and Social Networks"
-             :date "28/04/2015"
-             :time "14:30"
-             :venue "STOWNHALL"}
-   :ecs607u {:name "Data Mining"
-             :date "01/05/2015"
-             :time "14:30"
-             :venue "LAW SUITE"}
-   })
+  {:exams [{:title "Digital Media"
+                     :date "28/04/2015"
+                     :time "14:30"
+                     :venue "STOWNHALL"}
+           {:title "Data Mining"
+                     :date "01/05/2015"
+                     :time "14:30"
+                     :venue "LAW SUITE"}
+           ]
+   :selected-exams ["Digital Media"]
+   :name "Julia"})
