@@ -73,11 +73,15 @@
                               :css-dirs ["resources/public/css"]
                               :ring-handler exam-countdown.handler/app}
 
-                   :env {:dev? true}
-
-                   :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                                              :compiler {   :main "exam-countdown.dev"
-                                                         :source-map true}}
+                   :env {:dev? false}
+:ring {:open-browser? false
+                                 :stacktraces?  false
+                                 :auto-reload?  false}
+                   :cljsbuild {:builds {:app {:source-paths ["env/prod/cljs"]
+                                              :compiler {   :main "exam-countdown.prod"
+                                              :optimizations :advanced
+                                              :pretty-print false
+                                                         }}
                                         :test {:source-paths ["src/cljs"  "test/cljs"]
                                                :compiler {:output-to "target/test.js"
                                                           :optimizations :whitespace
@@ -100,8 +104,6 @@
                                               {:optimizations :advanced
                                                :pretty-print false}}}}}
 
-             :production {:ring {:open-browser? false
-                                 :stacktraces?  false
-                                 :auto-reload?  false}
+             :production {
                           :cljsbuild {:builds {:app {:compiler {:main "exam-countdown.prod"}}}}
                           }})
