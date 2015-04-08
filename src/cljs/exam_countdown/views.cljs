@@ -9,16 +9,12 @@
 
 (defn main-panel    ;; the top level of our app
   []
-  (let [name  (subscribe [:name])]   ;; obtain a reactive data source
+  (let [name (subscribe [:name])]   ;; obtain a reactive data source
     (fn []
       [:div
        [nav]
        [next-up]
-       [later-on]
-       (.log js/console (-> (interval (time-now) (date-time 2015 04 28))
-                            (in-days)))
-       [:div.container
-        [:h1 "Welcome " @name]]])))
+       [later-on]])))
 
 (defn exam-countdown-app
   []

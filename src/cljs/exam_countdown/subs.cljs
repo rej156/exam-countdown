@@ -24,13 +24,34 @@
 (register-sub
  :exam-selected?
  (fn [db exam]
-   (reaction (some #(= (second exam) %) (:selected-exams @db)))))
+   (try (reaction (some #(= (second exam) %) (:selected-exams @db)))
+        (catch :default e))))
 
 (register-sub
  :selected-exams
  (fn [db]
    (reaction
-    (filter (fn [exam] (some #(= (:title exam ) %) (:selected-exams @db))) (:exams @db)))))
+    (->> (filter (fn [exam] (some #(= (:title exam ) %) (:selected-exams @db)))
+                (:exams @db))
+        (sort-by :timestamp)))))
+
+(register-sub
+ :other-selected-exams
+ (fn [db]
+   (reaction
+    (->> (filter (fn [exam] (some #(= (:title exam ) %) (:selected-exams @db)))
+                (:exams @db))
+         (sort-by :timestamp)
+         (rest)))))
+
+(register-sub
+ :nearest-selected-exam
+ (fn [db]
+   (reaction
+    (->> (filter (fn [exam] (some #(= (:title exam ) %) (:selected-exams @db)))
+                (:exams @db))
+         (sort-by :timestamp)
+         (first)))))
 
 (register-sub
  :days-away

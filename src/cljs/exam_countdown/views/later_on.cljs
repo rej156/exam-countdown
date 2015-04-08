@@ -18,7 +18,7 @@
        ])) )
 
 (defn later-on []
-  (let [selected (subscribe [:selected-exams])]
+  (let [selected (subscribe [:other-selected-exams])]
     (fn []
       [:div.later-on
        [:div.row.later-on-header
