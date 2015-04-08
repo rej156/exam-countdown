@@ -2,12 +2,6 @@
   (:require [re-frame.db :refer [app-db]]
    [re-frame.core :refer [subscribe dispatch]]))
 
-(defn jquery-dropdown-activate []
-  (-> (js/$ ".button-collapse")
-      (.sideNav {:menuWidth 300
-                 :edge "left"
-                 :closeOnClick false})))
-
 (defn navbar-item [exam]
   (let [selected? (subscribe [:exam-selected? exam])]
     (fn []
@@ -23,7 +17,6 @@
       [:div.navbar
        [:nav
         [:a.button-collapse.show-on-large {:href "#"
-                                           :on-click #(jquery-dropdown-activate)
                                            :data-activates "slide-out"
                                            :style {:left "5px"
                                                    :height "100%"}}

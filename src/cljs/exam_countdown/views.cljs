@@ -1,7 +1,7 @@
 (ns exam-countdown.views
   (:require [reagent.core :as reagent]
             [re-frame.core :refer [subscribe dispatch]]
-            [exam-countdown.views.nav :refer [nav jquery-dropdown-activate]]
+            [exam-countdown.views.nav :refer [nav]]
             [exam-countdown.views.next-up :refer [next-up]]
             [cljs-time.core :refer [interval in-days date-time minutes from-now
   now time-now]]
@@ -11,7 +11,7 @@
   []
   (let [name (subscribe [:name])]   ;; obtain a reactive data source
     (fn []
-      [:div
+      [:div.content
        [nav]
        [next-up]
        [later-on]])))
@@ -20,8 +20,7 @@
   []
   (let [ready?  (subscribe [:initialised?])]
     (reagent/create-class
-     {:component-did-mount #(jquery-dropdown-activate)
-
+     {:component-did-mount #(.log js/console "rej156.github.io")
       :reagent-render (fn []
                         (if-not @ready?                ;; data is loaded?
                           [:div "Initialising ..."]   ;; tell them we are working on it
