@@ -48,7 +48,7 @@
  :nearest-selected-exam
  (fn [db]
    (reaction
-    (->> (filter (fn [exam] (some #(= (:title exam ) %) (:selected-exams @db)))
+    (->> (filter (fn [exam] (some #(= (:title exam) %) (:selected-exams @db)))
                 (:exams @db))
          (sort-by :timestamp)
          (first)))))

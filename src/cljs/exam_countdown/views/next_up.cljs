@@ -1,15 +1,24 @@
 (ns exam-countdown.views.next-up
-  (:require [re-frame.core :refer [subscribe dispatch]]))
+  (:require [re-frame.core :refer [subscribe dispatch]]
+            [cljs-time.core :refer [interval in-days date-time minutes from-now
+  now time-now]]))
+
+(defn daysaway [exam]
+  (let [month (:month exam)
+        day (:day exam)]
+    (try (-> (interval (time-now) (date-time 2015 month day))
+             (in-days))
+         (catch :default e))))
 
 (defn nearest-exam-details []
-  (let [nearest-exam (subscribe [:nearest-selected-exam])
-        days-away (subscribe [:days-away @nearest-exam])]
+  (let [nearest-exam (subscribe [:nearest-selected-exam])]
     (fn []
       [:div.row.nearest-exam-details
        [:div.col.s6
         [:h5 "Next Up"
          [:h3 (:title @nearest-exam)]
-         [:h4 (str "is in " @days-away " days")]]]
+         [:h4 (str "is in " (daysaway @nearest-exam) " days")]
+         ]]
        [:div.col.s6
         [:h5 "Time"]
         [:h4 (:time @nearest-exam)]]
